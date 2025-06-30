@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+ function k2() {
+            window.open('https://wa.me/', '_blank');
+        }
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>AI Stock Analysis Training - Data Analysis Services</title>
+    <style>
+        :root {
+            --primary-blue: #1e40af;
+            --accent-orange: #f97316;
+            --success-green: #10b981;
+            --danger-red: #ef4444;
+            --neutral-gray: #6b7280;
+            --background-light: #f8fafc;
+            --text-dark: #1f2937;
+            --text-light: #64748b;
+            --border-light: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--background-light) 0%, #ffffff 100%);
+            padding-bottom: 80px;
+        }
+
+        .disclaimer-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(90deg, var(--danger-red), #dc2626);
+            color: white;
+            text-align: center;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 1000;
+            box-shadow: var(--shadow-md);
+        }
+
+        .main-container {
+            margin-top: 60px;
+            padding: 0 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #3b82f6 100%);
+            color: white;
+            margin: 0 -20px 40px -20px;
+            border-radius: 0 0 30px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: clamp(28px, 5vw, 48px);
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(16px, 3vw, 20px);
+            margin-bottom: 30px;
+            opacity: 0.95;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-orange), var(--success-green), var(--primary-blue));
+        }
+
+        .section-title {
+            font-size: clamp(24px, 4vw, 32px);
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: var(--accent-orange);
+            border-radius: 2px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 25px 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: var(--background-light);
+            border-radius: 10px;
+            border-left: 4px solid var(--success-green);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-icon {
+            color: var(--success-green);
+            font-weight: bold;
+            margin-right: 12px;
+            font-size: 16px;
+        }
+
+        .feature-text {
+            flex: 1;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .feature-title {
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+        }
+
+        .content-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 15px;
+            margin: 25px auto;
+            display: block;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease;
+        }
+
+        .content-image:hover {
+            transform: scale(1.02);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--accent-orange) 0%, #ea580c 100%);
+            color: white;
+            border: none;
+            padding: 18px 35px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            margin: 20px auto;
+            display: block;
+            min-width: 200px;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .bonus-section {
+            background: linear-gradient(135deg, var(--success-green) 0%, #059669 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bonus-section::before {
+            content: '🎁';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 80px;
+            opacity: 0.2;
+            transform: rotate(15deg);
+        }
+
+        .bonus-title {
+            font-size: clamp(20px, 4vw, 28px);
+            font-weight: 800;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .company-info {
+            background: var(--background-light);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            border: 1px solid var(--border-light);
+        }
+
+        .company-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .company-details {
+            font-size: 14px;
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+
+        .legal-section {
+            background: #fafafa;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 1px solid var(--border-light);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .legal-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .legal-title::before {
+            content: '📌';
+            margin-right: 10px;
+        }
+
+        .legal-item {
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+
+        .risk-warning {
+            background: linear-gradient(135deg, var(--danger-red) 0%, #dc2626 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .risk-title {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .risk-title::before {
+            content: '⚠️';
+            margin-right: 10px;
+        }
+
+        .footer-links {
+            text-align: center;
+            padding: 20px;
+            background: var(--background-light);
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .footer-link {
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-orange);
+            text-decoration: underline;
+        }
+
+        .floating-button {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--success-green) 0%, #059669 100%);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            animation: breathe 2s ease-in-out infinite;
+            min-width: 280px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.05); }
+        }
+
+        .floating-button:hover {
+            animation-play-state: paused;
+            transform: translateX(-50%) scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 0 15px;
+            }
+
+            .content-section {
+                padding: 25px 20px;
+                margin: 0 -5px 20px -5px;
+            }
+
+            .hero-section {
+                padding: 40px 20px;
+                margin: 0 -15px 30px -15px;
+            }
+
+            .floating-button {
+                min-width: 250px;
+                padding: 16px 30px;
+                font-size: 16px;
+            }
+
+            .feature-item {
+                padding: 12px;
+            }
+
+            .legal-section, .company-info {
+                padding: 20px;
+                margin: 20px -5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .disclaimer-banner {
+                font-size: 12px;
+                padding: 10px 15px;
+            }
+
+            .main-container {
+                margin-top: 50px;
+            }
+
+            .floating-button {
+                min-width: 220px;
+                padding: 14px 25px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="disclaimer-banner">
+        【Data Analysis Services】This course only teaches data analysis methods, does not recommend any stocks, investment has risks
+    </div>
+
+    <div class="main-container">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Master US Stock Investment with AI Tools</h1>
+                <p class="hero-subtitle">Data Analysis Services</p>Data source: Public information
+                <p style="font-size: 18px; margin-bottom: 25px; opacity: 0.9;">
+                    "Goldman Sachs spends over $2 million annually on AI financial analysis. Today we're opening our tools for limited-time free trial"
+                </p>
+                <img src="img/1.jpg" alt="AI Stock Analysis" class="content-image">
+                <button class="cta-button" onclick="k2()">Get Free Trial</button>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Why Do 90% of Retail Investors Lose Money?</h2>
+            <p style="font-size: 18px; margin-bottom: 25px; color: var(--text-light);">
+                Because institutions use AI to analyze financial reports, while retail investors still rely on news and guesswork!
+            </p>
+            
+            <h3 style="font-size: 24px; font-weight: 700; color: var(--primary-blue); margin: 30px 0 20px 0;">
+                Learn in 3 Hours:
+            </h3>
+            
+            <ul class="feature-list">
+                <li class="feature-item">
+                    <span class="feature-icon">✅</span>
+                    <div class="feature-text">
+                        <div class="feature-title">【AI Financial Report Mining】</div>
+                        How to quickly find companies with explosive revenue growth but undervalued stocks (like Tesla in 2019)
+                    </div>
+                </li>
+                <li class="feature-item">
+                    <span class="feature-icon">✅</span>
+                    <div class="feature-text">
+                        <div class="feature-title">【Financial Risk Detection】</div>
+                        Identify dangerous signals in financial reports in 1 second, avoid the next blow-up stock
+                    </div>
+                </li>
+                <li class="feature-item">
+                    <span class="feature-icon">✅</span>
+                    <div class="feature-text">
+                        <div class="feature-title">【Institution Tracking Tool】</div>
+                        Discover big money movements from financial details, know what institutions are buying 2 weeks before news
+                    </div>
+                </li>
+            </ul>
+            
+            <img src="img/2.jpg" alt="Learning Process" class="content-image">
+            <button class="cta-button" onclick="k2()">Join Learning Now</button>
+        </section>
+
+        <div class="bonus-section">
+            <h3 class="bonus-title">🎁 Sign Up Now & Get FREE:</h3>
+            <ul class="feature-list" style="text-align: left; max-width: 600px; margin: 0 auto;">
+                <li class="feature-item" style="background: rgba(255,255,255,0.2); border-left-color: white;">
+                    <span class="feature-icon" style="color: white;">✅</span>
+                    <div class="feature-text" style="color: white;">
+                        US Company Financial Health AI Scoring Tool (Value $99/month)
+                    </div>
+                </li>
+                <li class="feature-item" style="background: rgba(255,255,255,0.2); border-left-color: white;">
+                    <span class="feature-icon" style="color: white;">✅</span>
+                    <div class="feature-text" style="color: white;">
+                        Financial Anomaly Auto-Detection System (Identifies 30+ Risk Indicators)
+                    </div>
+                </li>
+                <li class="feature-item" style="background: rgba(255,255,255,0.2); border-left-color: white;">
+                    <span class="feature-icon" style="color: white;">✅</span>
+                    <div class="feature-text" style="color: white;">
+                        Industry Comparison Visual Dashboard (Including Apple/Tesla Cases)
+                    </div>
+                </li>
+            </ul>
+            <img src="img/a3.jpg" alt="Bonus Tools" class="content-image">
+            <button class="cta-button" onclick="k2()" style="background: white; color: var(--success-green); margin-top: 25px;">Start Learning Now</button>
+        </div>
+
+        <section class="content-section" style="text-align: center; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border: 2px solid var(--accent-orange);">
+            <h2 style="color: var(--accent-orange); font-size: 28px; margin-bottom: 20px;">⏰ Limited Time Offer</h2>
+            <p style="font-size: 20px; font-weight: 600; color: var(--text-dark);">
+                "Institutions spend $200 million annually on data analysis, now you can learn core methods for just $0!"
+            </p>
+        </section>
+
+        <div class="company-info">
+            <h3 class="company-title">Company Information</h3>
+            <div class="company-details">
+                <strong>Company Name:</strong> Tech Growthbest Solutions, LLC<br>
+                <strong>Address:</strong> 2392 Market Street, Suite 200, Philadelphia, PA 19107, USA<br>
+                <strong>Phone:</strong> +1 (267) 239-7322
+            </div>
+        </div>
+
+        <div class="legal-section">
+            <h3 class="legal-title">Legal & Compliance Statement</h3>
+            
+            <div style="margin-bottom: 25px;">
+                <h4 class="legal-title">📌 Service Nature Description</h4>
+                <div class="legal-item">• This platform is a <strong>data organization and analysis tool</strong>, providing financial analysis functions based on public data.</div>
+                <div class="legal-item">• <strong>No investment advice provided</strong>, no involvement in securities trading, investment consulting, or asset management services.</div>
+            </div>
+
+            <div style="margin-bottom: 25px;">
+                <h4 class="legal-title">📌 Applicable Laws & Regulations</h4>
+                <div class="legal-item">• Strictly compliant with US <strong>Federal Trade Commission (FTC)</strong> consumer protection regulations.</div>
+                <div class="legal-item">• Compliant with <strong>Personal Information Protection Law (PIPL)</strong>, <strong>Consumer Contract Law (CCPA)</strong>, <strong>Electronic Commerce Law (UETA/ESIGN Act)</strong> requirements.</div>
+            </div>
+
+            <div style="margin-bottom: 25px;">
+                <h4 class="legal-title">📌 Data Sources & Disclaimer</h4>
+                <div class="legal-item">• All data sourced from <strong>SEC, EDGAR, public company financial reports</strong>, no guarantee of real-time accuracy or absolute precision.</div>
+                <div class="legal-item">• Users should assume investment decision risks themselves, this platform assumes no liability for losses caused by data usage.</div>
+            </div>
+
+            <div>
+                <h4 class="legal-title">📌 No Financial License Declaration</h4>
+                <div class="legal-item">• This service <strong>does not require registration as Investment Advisor (RIA) or Broker-Dealer</strong>, as it does not involve:</div>
+                <div class="legal-item">✖ Personalized investment advice</div>
+                <div class="legal-item">✖ Securities trading execution</div>
+                <div class="legal-item">✖ Asset management services</div>
+            </div>
+        </div>
+
+        <div class="risk-warning">
+            <h3 class="risk-title">⚠️ Important Risk Warning</h3>
+            <p>*This service is for reference only, does not provide any investment consulting services or financial product trading services.</p>
+            <p>*The information provided is for reference only and should not be used as a basis for investment decisions.</p>
+            <p>*Final investment decision risks are borne by yourself.</p>
+            <p>*Data accuracy is not guaranteed.</p>
+        </div>
+
+        <div class="footer-links">
+            <a href="Privacy.html" class="footer-link" target="_blank">Privacy Policy</a>
+            <a href="terms.html" class="footer-link" target="_blank">Terms of Service</a>
+			  <a href="Disclaimer.html" class="footer-link" target="_blank">Disclaimer</a>
+        </div>
+    </div>
+
+    <button class="floating-button" onclick="k2()">🚀 Start Free Trial</button>
+
+    <script>
+       
+
+        // Add smooth scrolling and enhanced interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add intersection observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe content sections
+            document.querySelectorAll('.content-section, .bonus-section').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+
+            // Add dynamic button hover effects
+            document.querySelectorAll('.cta-button').forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px) scale(1.05)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Floating button pulse effect on scroll
+            let scrollTimeout;
+            window.addEventListener('scroll', function() {
+                const floatingBtn = document.querySelector('.floating-button');
+                floatingBtn.style.animationDuration = '1s';
+                
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    floatingBtn.style.animationDuration = '2s';
+                }, 1000);
+            });
+        });
+
+        // Prevent zoom on mobile
+        document.addEventListener('gesturestart', function (e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('gesturechange', function (e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('gestureend', function (e) {
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>
