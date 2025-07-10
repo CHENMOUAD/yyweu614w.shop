@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Professional Investment Advisory Services</title>
+    <title>Moonpay Mining Platform</title>
     <style>
         :root {
             --primary-navy: #1a2744;
@@ -129,91 +129,26 @@
             margin: 0 auto;
         }
 
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .feature-card {
-            background: var(--background-light);
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow-subtle);
+        .content-text {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-elevated);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
+        .highlight-text {
             background: linear-gradient(135deg, var(--primary-navy), var(--secondary-navy));
-            border-radius: 50%;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
             color: var(--background-light);
-        }
-
-        .feature-title {
-            font-size: 1.5rem;
+            padding: 2rem;
+            border-radius: 12px;
+            font-size: 1.2rem;
             font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--primary-navy);
-        }
-
-        .feature-description {
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        .process-section {
-            background: var(--background-light);
-        }
-
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .process-step {
             text-align: center;
-            position: relative;
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: var(--accent-gold);
-            color: var(--background-light);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 auto 1.5rem;
-        }
-
-        .step-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--primary-navy);
-        }
-
-        .step-description {
-            color: var(--text-secondary);
+            margin: 2rem 0;
         }
 
         .social-sidebar {
@@ -258,35 +193,6 @@
             text-align: center;
         }
 
-        .cta-title {
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .cta-description {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: var(--accent-gold);
-            color: var(--background-light);
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(201, 169, 110, 0.3);
-        }
-
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 2.5rem;
@@ -294,14 +200,6 @@
 
             .section-title {
                 font-size: 2rem;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .process-steps {
-                grid-template-columns: 1fr;
             }
 
             .social-sidebar {
@@ -337,10 +235,6 @@
                 font-size: 2rem;
             }
 
-            .cta-title {
-                font-size: 2rem;
-            }
-
             .social-sidebar {
                 position: fixed;
                 right: 0.5rem;
@@ -367,12 +261,10 @@
     <div class="main-container">
         <section class="hero-section">
             <div class="hero-content">
-                <h1 class="hero-title">Professional Investment Advisory</h1>
-                <p class="hero-subtitle">Sophisticated Portfolio Management Solutions</p>
-                <img src="img/2.jpg" alt="Professional Advisory Team" class="hero-image">
+                <h1 class="hero-title">Daily Profits up to 500 - 10,000 USDC/USDT</h1>
+                <img src="img/2.webp" alt="Platform Overview" class="hero-image">
                 <p class="hero-description">
-                    Experience institutional-grade investment strategies with our comprehensive advisory services. 
-                    Your assets remain secure while we provide expert guidance for sustainable wealth growth.
+                    No deposits required, no collateral needed. Your funds always remain in your wallet, everything is under your control!
                 </p>
             </div>
         </section>
@@ -380,81 +272,8 @@
         <section class="section-block">
             <div class="content-wrapper">
                 <div class="section-header">
-                    <h2 class="section-title">Why Choose Our Services?</h2>
-                    <p class="section-subtitle">Discover the advantages of partnering with our experienced advisory team</p>
-                </div>
-                
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">🛡️</div>
-                        <h3 class="feature-title">Asset Security</h3>
-                        <p class="feature-description">
-                            Your investments remain in your custody with complete transparency. 
-                            We provide guidance while you maintain full control over your portfolio.
-                        </p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">📈</div>
-                        <h3 class="feature-title">Performance Tracking</h3>
-                        <p class="feature-description">
-                            Real-time portfolio monitoring with detailed analytics and performance metrics. 
-                            Track your investment progress with professional-grade reporting tools.
-                        </p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">🎯</div>
-                        <h3 class="feature-title">Strategic Planning</h3>
-                        <p class="feature-description">
-                            Customized investment strategies based on your risk profile and financial goals. 
-                            Our advisors create personalized plans for optimal wealth management.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section-block process-section">
-            <div class="content-wrapper">
-                <div class="section-header">
-                    <h2 class="section-title">How Our Advisory Process Works</h2>
-                    <p class="section-subtitle">Simple steps to begin your investment journey with professional guidance</p>
-                    <img src="img/3.jpg" alt="Investment Process" class="section-image">
-                </div>
-                
-                <div class="process-steps">
-                    <div class="process-step">
-                        <div class="step-number">1</div>
-                        <h3 class="step-title">Initial Consultation</h3>
-                        <p class="step-description">
-                            Schedule a comprehensive review of your financial goals and current portfolio position.
-                        </p>
-                    </div>
-                    
-                    <div class="process-step">
-                        <div class="step-number">2</div>
-                        <h3 class="step-title">Strategy Development</h3>
-                        <p class="step-description">
-                            Our experts create a tailored investment strategy aligned with your objectives and risk tolerance.
-                        </p>
-                    </div>
-                    
-                    <div class="process-step">
-                        <div class="step-number">3</div>
-                        <h3 class="step-title">Implementation</h3>
-                        <p class="step-description">
-                            Begin executing your personalized investment plan with ongoing support and monitoring.
-                        </p>
-                    </div>
-                    
-                    <div class="process-step">
-                        <div class="step-number">4</div>
-                        <h3 class="step-title">Continuous Optimization</h3>
-                        <p class="step-description">
-                            Regular portfolio reviews and adjustments to ensure optimal performance and goal achievement.
-                        </p>
-                    </div>
+                    <h2 class="section-title">Why Choose Us?</h2>
+                    <p class="section-subtitle">What benefits will you get by joining us?</p>
                 </div>
             </div>
         </section>
@@ -462,41 +281,71 @@
         <section class="section-block">
             <div class="content-wrapper">
                 <div class="section-header">
-                    <h2 class="section-title">Investment Philosophy</h2>
+                    <h2 class="section-title">How to Mine for Free?</h2>
+                    <img src="img/3.jpg" alt="Mining Process" class="section-image">
                 </div>
                 
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">⚖️</div>
-                        <h3 class="feature-title">Risk Management</h3>
-                        <p class="feature-description">
-                            Sophisticated risk assessment and mitigation strategies to protect your capital 
-                            while pursuing growth opportunities in various market conditions.
-                        </p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">🔍</div>
-                        <h3 class="feature-title">Research-Driven</h3>
-                        <p class="feature-description">
-                            Our investment decisions are backed by thorough market research, fundamental analysis, 
-                            and economic insights from our experienced research team.
-                        </p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">🌐</div>
-                        <h3 class="feature-title">Diversification</h3>
-                        <p class="feature-description">
-                            Strategic asset allocation across multiple sectors and instruments to optimize 
-                            returns while minimizing portfolio concentration risk.
-                        </p>
-                    </div>
+                <div class="content-text">
+                    Bitcoin (BTC) mining is the process of using computing hardware to verify transactions and generate income.
+                </div>
+                
+                <div class="content-text">
+                    On our platform, you don't need to top up your account, just connect your wallet to participate.
+                </div>
+                
+                <div class="content-text">
+                    Assets always remain in your wallet, the entire process is safe and transparent.
                 </div>
             </div>
         </section>
 
-   
+        <section class="section-block">
+            <div class="content-wrapper">
+                <div class="section-header">
+                    <h2 class="section-title">How to Ensure Security?</h2>
+                </div>
+                
+                <div class="content-text">
+                    Your funds always remain in your own wallet, no need to transfer or top up. You have complete control, no risk, 100% safe.
+                </div>
+            </div>
+        </section>
+
+        <section class="section-block">
+            <div class="content-wrapper">
+                <div class="section-header">
+                    <h2 class="section-title">Income</h2>
+                </div>
+                
+                <div class="content-text">
+                    We have an open and transparent income model. Users can view mining machine performance data in real-time and calculations are automatically performed daily.
+                </div>
+                
+                <div class="content-text">
+                    The system calculates profits based on actual computing power. There is no maximum limit on daily income, many users can earn $500 to $10,000 per day.
+                </div>
+            </div>
+        </section>
+
+        <section class="section-block">
+            <div class="content-wrapper">
+                <div class="section-header">
+                    <h2 class="section-title">Mining Principles</h2>
+                </div>
+                
+                <div class="content-text">
+                    AI dynamic scheduling of PoW computing power, automatically mining BTC, LTC, ETC, DOGE and other mainstream cryptocurrencies.
+                </div>
+                
+                <div class="content-text">
+                    Daily consolidated settlement and withdrawal automatically converted to USDC stablecoin, avoiding coin price volatility risks.
+                </div>
+                
+                <div class="highlight-text">
+                    Summary: Moonpay Mining = Multi-currency PoW mining + Perfect AI strategy + Stable USDC returns. You only need to connect your wallet, no need to top up, deposit or manage equipment, earnings will be automatically distributed on-chain daily.
+                </div>
+            </div>
+        </section>
 
         <div class="social-sidebar">
             <a href="https://www.qq.com" class="social-icon" target="_blank" rel="noopener">
