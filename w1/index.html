@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>日本株式投資家調査</title>
+    <style>
+        :root {
+            --primary-azure-blue: #0066CC;
+            --secondary-royal-blue: #004499;
+            --tertiary-light-blue: #E6F2FF;
+            --quaternary-white: #FFFFFF;
+            --quintenary-text-dark: #333333;
+            --senary-text-light: #666666;
+            --septenary-border: #E0E0E0;
+            --octonary-success: #00AA44;
+            --nonary-shadow: rgba(0, 102, 204, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .main-container-wrapper {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic UI', 'Meiryo UI', 'MS PGothic', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.8;
+            color: var(--quintenary-text-dark);
+            background: linear-gradient(135deg, var(--tertiary-light-blue) 0%, var(--quaternary-white) 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        .content-section-container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .header-image-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .circular-breathing-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            animation: breathing-pulse-animation 3s ease-in-out infinite;
+            box-shadow: 0 8px 25px var(--nonary-shadow);
+        }
+
+        @keyframes breathing-pulse-animation {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+        }
+
+        .primary-heading-title {
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--primary-azure-blue);
+            text-align: center;
+            margin-bottom: 18px;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--primary-azure-blue), var(--secondary-royal-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 10px rgba(0, 102, 204, 0.1);
+            font-feature-settings: "kern" 1, "liga" 1;
+        }
+
+        .secondary-subtitle-text {
+            font-size: 17px;
+            color: var(--senary-text-light);
+            text-align: center;
+            margin-bottom: 35px;
+            background: var(--quaternary-white);
+            padding: 16px 28px;
+            border-radius: 30px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            border: 1px solid rgba(0, 102, 204, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .progress-indicator-wrapper {
+            margin-bottom: 30px;
+        }
+
+        .progress-bar-container {
+            background: rgba(255, 255, 255, 0.7);
+            height: 8px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 10px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-fill-element {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-azure-blue), var(--secondary-royal-blue));
+            border-radius: 20px;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill-element::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: progress-shimmer 2s infinite;
+        }
+
+        @keyframes progress-shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .progress-text-indicator {
+            text-align: center;
+            font-size: 14px;
+            color: var(--senary-text-light);
+            font-weight: 500;
+        }
+
+        .form-section-container {
+            background: var(--quaternary-white);
+            border-radius: 20px;
+            padding: 30px 25px;
+            box-shadow: 0 10px 40px rgba(0, 102, 204, 0.12);
+            margin-bottom: 25px;
+            border: 1px solid rgba(0, 102, 204, 0.1);
+        }
+
+        .question-step-container {
+            display: none;
+        }
+
+        .question-step-container.active-visible-state {
+            display: block;
+            animation: fade-slide-in-animation 0.5s ease-out;
+        }
+
+        @keyframes fade-slide-in-animation {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .question-heading-text {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--primary-azure-blue);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--tertiary-light-blue);
+            letter-spacing: 0.01em;
+            font-feature-settings: "kern" 1;
+        }
+
+        .option-input-wrapper {
+            margin-bottom: 15px;
+        }
+
+        .radio-checkbox-label {
+            display: flex;
+            align-items: center;
+            padding: 18px 22px;
+            background: rgba(230, 242, 255, 0.3);
+            border: 2px solid transparent;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 17px;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            line-height: 1.6;
+            backdrop-filter: blur(5px);
+        }
+
+        .radio-checkbox-label:hover {
+            background: var(--tertiary-light-blue);
+            border-color: var(--primary-azure-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 102, 204, 0.15);
+        }
+
+        .radio-checkbox-input {
+            margin-right: 12px;
+            transform: scale(1.3);
+        }
+
+        .radio-checkbox-label.selected-option-state {
+            background: var(--tertiary-light-blue);
+            border-color: var(--primary-azure-blue);
+            color: var(--secondary-royal-blue);
+            font-weight: 600;
+        }
+
+        .completion-message-container {
+            display: none;
+            text-align: center;
+            background: var(--quaternary-white);
+            border-radius: 20px;
+            padding: 40px 25px;
+            box-shadow: 0 15px 50px rgba(0, 102, 204, 0.15);
+            border: 2px solid var(--octonary-success);
+        }
+
+        .completion-message-container.visible-active-state {
+            display: block;
+            animation: success-bounce-animation 0.8s ease-out;
+        }
+
+        @keyframes success-bounce-animation {
+            0% { opacity: 0; transform: scale(0.9) translateY(30px); }
+            50% { transform: scale(1.05) translateY(-5px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .completion-title-heading {
+            font-size: 26px;
+            font-weight: 600;
+            color: var(--octonary-success);
+            margin-bottom: 22px;
+            letter-spacing: 0.01em;
+            font-feature-settings: "kern" 1;
+        }
+
+        .completion-description-text {
+            font-size: 16px;
+            color: var(--quintenary-text-dark);
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .benefits-list-container {
+            text-align: left;
+            margin-bottom: 30px;
+            background: rgba(0, 170, 68, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .benefit-item-element {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 15px;
+            color: var(--quintenary-text-dark);
+        }
+
+        .benefit-icon-symbol {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        .cta-button-primary {
+            background: linear-gradient(135deg, var(--primary-azure-blue), var(--secondary-royal-blue));
+            color: var(--quaternary-white);
+            padding: 18px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.3);
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 102, 204, 0.4);
+            background: linear-gradient(135deg, var(--secondary-royal-blue), var(--primary-azure-blue));
+        }
+
+        .cta-button-primary:active {
+            transform: translateY(-1px);
+        }
+
+        .disclaimer-section-container {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            border-left: 4px solid #FF6B35;
+        }
+
+        .risk-warning-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #FF6B35;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .warning-icon-symbol {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+
+        .risk-disclaimer-list {
+            list-style: none;
+            font-size: 13px;
+            color: var(--senary-text-light);
+            line-height: 1.5;
+        }
+
+        .risk-disclaimer-item {
+            margin-bottom: 8px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .risk-disclaimer-item::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #FF6B35;
+            font-weight: bold;
+        }
+
+        .footer-links-container {
+            margin-top: 20px;
+            text-align: center;
+            padding: 15px;
+            border-top: 1px solid var(--septenary-border);
+        }
+
+        .footer-link-element {
+            color: var(--primary-azure-blue);
+            text-decoration: none;
+            font-size: 12px;
+            margin: 0 15px;
+            font-weight: 500;
+        }
+
+        .footer-link-element:hover {
+            text-decoration: underline;
+        }
+
+        /* Modal Styles */
+        .confirmation-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 102, 204, 0.2));
+            backdrop-filter: blur(12px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: modal-fade-in 0.4s ease-out;
+        }
+
+        .confirmation-modal-overlay.visible {
+            display: flex;
+        }
+
+        @keyframes modal-fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .confirmation-modal-content {
+            background: linear-gradient(145deg, var(--quaternary-white), #f8fbff);
+            border-radius: 28px;
+            padding: 45px 35px;
+            max-width: 460px;
+            width: 92%;
+            margin: 20px;
+            box-shadow: 
+                0 25px 80px rgba(0, 102, 204, 0.25),
+                0 10px 40px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            position: relative;
+            animation: modal-slide-up 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            border: 1px solid rgba(0, 102, 204, 0.1);
+            overflow: hidden;
+        }
+
+        .confirmation-modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-azure-blue), var(--secondary-royal-blue), #00AA44);
+            border-radius: 28px 28px 0 0;
+        }
+
+        @keyframes modal-slide-up {
+            from {
+                opacity: 0;
+                transform: translateY(60px) scale(0.85);
+            }
+            50% {
+                transform: translateY(-10px) scale(1.02);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-close-button {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            background: rgba(0, 102, 204, 0.1);
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            font-size: 20px;
+            color: var(--senary-text-light);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-close-button:hover {
+            background: rgba(255, 107, 53, 0.15);
+            color: #FF6B35;
+            transform: rotate(90deg) scale(1.1);
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+        }
+
+        .modal-icon-container {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .modal-redirect-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--primary-azure-blue), var(--secondary-royal-blue));
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: white;
+            margin-bottom: 10px;
+            animation: icon-pulse 2s ease-in-out infinite;
+            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.3);
+        }
+
+        @keyframes icon-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .modal-heading-title {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-azure-blue), var(--secondary-royal-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            text-align: center;
+            letter-spacing: -0.01em;
+            font-feature-settings: "kern" 1;
+        }
+
+        .modal-message-text {
+            font-size: 17px;
+            color: var(--quintenary-text-dark);
+            margin-bottom: 30px;
+            text-align: center;
+            line-height: 1.7;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+        }
+
+        .modal-links-container {
+            margin-bottom: 30px;
+            text-align: center;
+            padding: 20px 25px;
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.08), rgba(0, 170, 68, 0.05));
+            border-radius: 18px;
+            border: 1px solid rgba(0, 102, 204, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-links-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer-effect 3s infinite;
+        }
+
+        @keyframes shimmer-effect {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .modal-links-label {
+            font-size: 13px;
+            color: var(--senary-text-light);
+            margin-bottom: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .modal-policy-link {
+            color: var(--primary-azure-blue);
+            text-decoration: none;
+            font-size: 15px;
+            margin: 0 15px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .modal-policy-link:hover {
+            background: rgba(0, 102, 204, 0.1);
+            color: var(--secondary-royal-blue);
+            transform: translateY(-1px);
+            text-decoration: none;
+        }
+
+        .modal-buttons-container {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            margin-top: 35px;
+        }
+
+        .modal-button-cancel {
+            padding: 16px 32px;
+            border: 2px solid rgba(0, 102, 204, 0.2);
+            background: linear-gradient(145deg, var(--quaternary-white), #f8fbff);
+            color: var(--senary-text-light);
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            min-width: 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-button-cancel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 102, 204, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .modal-button-cancel:hover::before {
+            left: 100%;
+        }
+
+        .modal-button-cancel:hover {
+            border-color: var(--primary-azure-blue);
+            color: var(--primary-azure-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 102, 204, 0.15);
+        }
+
+        .modal-button-confirm {
+            padding: 16px 32px;
+            background: linear-gradient(135deg, var(--primary-azure-blue), var(--secondary-royal-blue));
+            color: var(--quaternary-white);
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 6px 20px rgba(0, 102, 204, 0.4),
+                0 2px 8px rgba(0, 102, 204, 0.2);
+            min-width: 120px;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+
+        .modal-button-confirm::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .modal-button-confirm:hover::before {
+            left: 100%;
+        }
+
+        .modal-button-confirm:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 10px 30px rgba(0, 102, 204, 0.5),
+                0 4px 15px rgba(0, 102, 204, 0.3);
+            background: linear-gradient(135deg, var(--secondary-royal-blue), var(--primary-azure-blue));
+        }
+
+        .modal-button-confirm:active {
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 480px) {
+            .content-section-container {
+                padding: 15px;
+            }
+            
+            .primary-heading-title {
+                font-size: 24px;
+            }
+            
+            .form-section-container {
+                padding: 25px 20px;
+            }
+            
+            .completion-message-container {
+                padding: 30px 20px;
+            }
+
+            .confirmation-modal-content {
+                padding: 30px 25px;
+                margin: 15px;
+            }
+
+            .modal-buttons-container {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .modal-button-cancel,
+            .modal-button-confirm {
+                width: 100%;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container-wrapper">
+        <div class="content-section-container">
+            <!-- Header Section -->
+            <div class="header-image-container">
+                <img src="https://www.jacmsotck.online/415rirenshen/15.jpg" alt="投資家調査" class="circular-breathing-image">
+            </div>
+
+            <h1 class="primary-heading-title">日本株式投資家調査</h1>
+            <p class="secondary-subtitle-text">アンケート完了後、8つの銘柄リストをプレゼント</p>
+
+            <!-- Progress Bar -->
+            <div class="progress-indicator-wrapper">
+                <div class="progress-bar-container">
+                    <div class="progress-fill-element" id="progressFillElement" style="width: 0%"></div>
+                </div>
+                <div class="progress-text-indicator" id="progressTextIndicator">質問 0/3</div>
+            </div>
+
+            <!-- Form Section -->
+            <div class="form-section-container">
+                <!-- Question 1 -->
+                <div class="question-step-container active-visible-state" id="questionStepOne">
+                    <h2 class="question-heading-text">あなたの投資経験は？</h2>
+                    <div class="option-input-wrapper">
+                        <label class="radio-checkbox-label" onclick="selectQuestionOneOption(this, 'beginner')">
+                            <input type="radio" name="investment_experience" value="beginner" class="radio-checkbox-input">
+                            初心者（投資経験1年未満）
+                        </label>
+                    </div>
+                    <div class="option-input-wrapper">
+                        <label class="radio-checkbox-label" onclick="selectQuestionOneOption(this, 'intermediate')">
+                            <input type="radio" name="investment_experience" value="intermediate" class="radio-checkbox-input">
+                            中級者（1-3年経験、自主取引）
+                        </label>
+                    </div>
+                    <div class="option-input-wrapper">
+                        <label class="radio-checkbox-label" onclick="selectQuestionOneOption(this, 'advanced')">
+                            <input type="radio" name="investment_experience" value="advanced" class="radio-checkbox-input">
+                            上級者（3年以上、多様な戦略に精通）
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="question-step-container" id="questionStepTwo">
+                    <h2 class="question-heading-text">日本のどの業界に関心がありますか？（複数選択可）</h2>
+                    <div class="option-input-wrapper">
+                        <label class="radio-checkbox-label" onclick="toggleQuestionTwoOption(this)">
+                            <input type="checkbox" name="industry_interest" value="technology" class="radio-checkbox-input">
+                            テクノロジー（半導体、AI、インターネット）
+                        </label>
+                    </div>
+                    <div class="option-input-wrapper">
+                        <label class="radio-checkbox-label" onclick="toggleQuestionTwoOption(this)">
+                            <input type="checkbox" name="industry_interest" value="consumer" class="radio-checkbox-input">
+                            消費財（小売、食品、自動車）
+                        </label>
+                    </div>
+                    <div class="option-input-wrapper">
+                        <label class="radio-checkbox-label" onclick="toggleQuestionTwoOption(this)">
+                            <input type="checkbox" name="industry_interest" value="finance" class="radio-checkbox-input">
+                            金融（銀行、保険、証券）
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="question-step-container" id="questionStepThree">
+                    <h2 class="question-heading-text">よく使用する分析ツールは？</h2>
+                    <div class="option-input-wrapper">
+                        <label class="radio-checkbox-label" onclick="selectQuestionThreeOption(this, 'technical')">
+                            <input type="radio" name="analysis_tool" value="technical" class="radio-checkbox-input">
+                            テクニカルチャート
+                        </label>
+                    </div>
+                    <div class="option-input-wrapper">
+                        <label class="radio-checkbox-label" onclick="selectQuestionThreeOption(this, 'fundamental')">
+                            <input type="radio" name="analysis_tool" value="fundamental" class="radio-checkbox-input">
+                            ファンダメンタルデータ（決算書、PERなど）
+                        </label>
+                    </div>
+                    <div class="option-input-wrapper">
+                        <label class="radio-checkbox-label" onclick="selectQuestionThreeOption(this, 'news')">
+                            <input type="radio" name="analysis_tool" value="news" class="radio-checkbox-input">
+                            ニュース・世論（日経新聞、SNSなど）
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Completion Message -->
+            <div class="completion-message-container" id="completionMessageContainer">
+                <h2 class="completion-title-heading">アンケート完了</h2>
+                <h3 style="font-size: 20px; color: var(--primary-azure-blue); margin-bottom: 15px;">より多くの日本株式市場リソースを取得</h3>
+                
+                <p class="completion-description-text">
+                    アンケートにご協力いただき、ありがとうございます！以下の<strong>無料リソース</strong>をご希望の場合は、LINE公式アカウントを追加してください：
+                </p>
+
+                <div class="benefits-list-container">
+                    <div class="benefit-item-element">
+                        <span class="benefit-icon-symbol">👉</span>
+                        <span>『2025年日本株式市場業界データ白書』をプレゼント</span>
+                    </div>
+                    <div class="benefit-item-element">
+                        <span class="benefit-icon-symbol">👉</span>
+                        <span>毎週日経指数の動向をお送り</span>
+                    </div>
+                </div>
+
+                <button class="cta-button-primary" onclick="showConfirmationModal()">
+                    LINE公式アカウント追加で受け取る
+                </button>
+            </div>
+
+            <!-- Disclaimer Section -->
+            <div class="disclaimer-section-container">
+                <div class="risk-warning-title">
+                    <span class="warning-icon-symbol">⚠️</span>
+                    重要なリスク警告
+                </div>
+                <ul class="risk-disclaimer-list">
+                    <li class="risk-disclaimer-item">本サービスは一般的な市場情報のみを提供しており、投資助言や推奨を構成するものではありません。</li>
+                    <li class="risk-disclaimer-item">金融市場にはリスクがあり、投資元本の一部または全部を失う可能性があります。</li>
+                    <li class="risk-disclaimer-item">表示されている例はすべて過去のデータ分析であり、将来の収益を保証するものではありません。</li>
+                    <li class="risk-disclaimer-item">投資家は自身のリスク許容度に基づいて慎重に判断してください。</li>
+                    <li class="risk-disclaimer-item">すべての情報は客観的事実の陳述であり、投資助言を構成するものではありません。</li>
+                </ul>
+            </div>
+
+            <!-- Footer Links -->
+            <div class="footer-links-container">
+                <a href="https://www.baidu.com" class="footer-link-element">プライバシーポリシー</a>
+                <a href="https://www.baidu.com" class="footer-link-element">利用規約</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="confirmation-modal-overlay" id="confirmationModalOverlay">
+        <div class="confirmation-modal-content">
+            <button class="modal-close-button" onclick="hideConfirmationModal()">×</button>
+            
+            <h2 class="modal-heading-title">外部サイトへの移動</h2>
+            
+            <p class="modal-message-text">
+                あなたは現在のページを離れ、<strong>Line公式アカウント</strong>にリダイレクトされます。
+            </p>
+            
+            <div class="modal-links-container">
+                <a href="https://www.baidu.com" class="modal-policy-link">プライバシーポリシー</a>
+                <a href="https://www.baidu.com" class="modal-policy-link">利用規約</a>
+            </div>
+            
+            <div class="modal-buttons-container">
+                <button class="modal-button-cancel" onclick="hideConfirmationModal()">
+                    キャンセル
+                </button>
+                <button class="modal-button-confirm" onclick="confirmRedirection()">
+                    LINEに移動
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentQuestionStep = 1;
+        let questionOneCompleted = false;
+        let questionTwoCompleted = false;
+        let selectedIndustries = [];
+
+        function updateProgressIndicator() {
+            const progressFillElement = document.getElementById('progressFillElement');
+            const progressTextIndicator = document.getElementById('progressTextIndicator');
+            const progressPercentage = (currentQuestionStep - 1) * 33.33;
+            
+            progressFillElement.style.width = progressPercentage + '%';
+            progressTextIndicator.textContent = `質問 ${currentQuestionStep - 1}/3`;
+        }
+
+        function selectQuestionOneOption(labelElement, optionValue) {
+            // Remove selected state from all labels in question 1
+            const questionOneContainer = document.getElementById('questionStepOne');
+            const allLabelsQuestionOne = questionOneContainer.querySelectorAll('.radio-checkbox-label');
+            allLabelsQuestionOne.forEach(label => {
+                label.classList.remove('selected-option-state');
+            });
+
+            // Add selected state to clicked label
+            labelElement.classList.add('selected-option-state');
+            labelElement.querySelector('input').checked = true;
+
+            questionOneCompleted = true;
+
+            // Show question 2 after delay
+            setTimeout(() => {
+                document.getElementById('questionStepOne').classList.remove('active-visible-state');
+                document.getElementById('questionStepTwo').classList.add('active-visible-state');
+                currentQuestionStep = 2;
+                updateProgressIndicator();
+            }, 500);
+        }
+
+        function toggleQuestionTwoOption(labelElement) {
+            const checkboxInput = labelElement.querySelector('input');
+            const industryValue = checkboxInput.value;
+
+            if (checkboxInput.checked) {
+                labelElement.classList.add('selected-option-state');
+                if (!selectedIndustries.includes(industryValue)) {
+                    selectedIndustries.push(industryValue);
+                }
+            } else {
+                labelElement.classList.remove('selected-option-state');
+                selectedIndustries = selectedIndustries.filter(item => item !== industryValue);
+            }
+
+            // Show question 3 if at least one industry is selected
+            if (selectedIndustries.length > 0 && !questionTwoCompleted) {
+                questionTwoCompleted = true;
+                setTimeout(() => {
+                    document.getElementById('questionStepTwo').classList.remove('active-visible-state');
+                    document.getElementById('questionStepThree').classList.add('active-visible-state');
+                    currentQuestionStep = 3;
+                    updateProgressIndicator();
+                }, 800);
+            }
+        }
+
+        function selectQuestionThreeOption(labelElement, optionValue) {
+            // Remove selected state from all labels in question 3
+            const questionThreeContainer = document.getElementById('questionStepThree');
+            const allLabelsQuestionThree = questionThreeContainer.querySelectorAll('.radio-checkbox-label');
+            allLabelsQuestionThree.forEach(label => {
+                label.classList.remove('selected-option-state');
+            });
+
+            // Add selected state to clicked label
+            labelElement.classList.add('selected-option-state');
+            labelElement.querySelector('input').checked = true;
+
+            // Complete the form
+            setTimeout(() => {
+                document.getElementById('questionStepThree').classList.remove('active-visible-state');
+                document.getElementById('completionMessageContainer').classList.add('visible-active-state');
+                currentQuestionStep = 4;
+                
+                // Update progress to 100%
+                const progressFillElement = document.getElementById('progressFillElement');
+                const progressTextIndicator = document.getElementById('progressTextIndicator');
+                progressFillElement.style.width = '100%';
+                progressTextIndicator.textContent = '完了 3/3';
+            }, 500);
+        }
+
+        function kma() {
+            // User-defined function for LINE redirect
+            console.log('kma() function called - redirect to LINE');
+        }
+
+        // Modal Functions
+        function showConfirmationModal() {
+            const modalOverlay = document.getElementById('confirmationModalOverlay');
+            modalOverlay.classList.add('visible');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideConfirmationModal() {
+            const modalOverlay = document.getElementById('confirmationModalOverlay');
+            modalOverlay.classList.remove('visible');
+            document.body.style.overflow = 'auto';
+        }
+
+        function confirmRedirection() {
+            hideConfirmationModal();
+            kma();
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('confirmationModalOverlay').addEventListener('click', function(event) {
+            if (event.target === this) {
+                hideConfirmationModal();
+            }
+        });
+
+        // Initialize progress
+        updateProgressIndicator();
+    </script>
+</body>
+</html>
