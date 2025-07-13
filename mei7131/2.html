@@ -539,15 +539,16 @@
             height: 315px; /* 视频高度 */
         }
 		
-	  .video-container {
+	 .video-container {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh; /* 使视频容器充满视口高度 */
         }
         video {
-            width: 560px; /* 视频宽度 */
-            height: 315px; /* 视频高度 */
+            width: 100%; /* 将视频宽度设置为100% */
+            height: auto; /* 高度自适应 */
+            max-width: 560px; /* 设置最大宽度 */
         }
         
     </style>
