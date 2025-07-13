@@ -1,666 +1,635 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
- <script>
-        function otta() {
-            window.location.href = "https://wa.me/1111111111";
+<script>
+ function opensite() {
+            window.open('https://wa.me/1234567890', '_blank');
         }
-    </script>
-	
+</script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>2025</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Andreas Graf - Finanzbildung für alle</title>
     <style>
-        :root {
-            --chromatic-obsidian-foundation: #0f172a;
-            --luminous-crimson-activation: #dc2626;
-            --ethereal-azure-professional: #1e40af;
-            --vibrant-emerald-success: #059669;
-            --radiant-amber-caution: #f59e0b;
-            --pristine-platinum-surface: #ffffff;
-            --gossamer-pearl-backdrop: #f8fafc;
-            --titanium-charcoal-typography: #1f2937;
-            --argentum-slate-secondary: #64748b;
-            --crystalline-border-delineation: #e5e7eb;
-            --incandescent-gold-emphasis: #eab308;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        .orchestrated-document-infrastructure {
-            font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
-            background: linear-gradient(135deg, var(--gossamer-pearl-backdrop) 0%, #e2e8f0 40%, #cbd5e1 100%);
-            color: var(--titanium-charcoal-typography);
-            line-height: 1.75;
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #2C2C2C;
+            color: white;
             overflow-x: hidden;
-            min-height: 100vh;
-            position: relative;
         }
-
-        .strategic-viewport-containment-matrix {
-            max-width: 480px;
+        
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 25px;
+            padding: 0 24px;
         }
-
-        .atmospheric-hero-presentation-complex {
-            background: linear-gradient(135deg, var(--chromatic-obsidian-foundation) 0%, var(--ethereal-azure-professional) 60%, #1e40af 100%);
-            color: var(--pristine-platinum-surface);
-            padding: 80px 0 50px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+        
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
         }
-
-        .atmospheric-hero-presentation-complex::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(14, 165, 233, 0.12) 0%, transparent 50%);
-            z-index: 1;
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
         }
-
-        .declarative-mission-statement-typography {
-            font-size: 20px;
-            font-weight: 500;
-            margin-bottom: 35px;
-            position: relative;
-            z-index: 3;
-            line-height: 1.6;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
         }
-
-        .testimonial-authentication-visual-asset {
-            width: 140px;
-            height: 140px;
+        
+        .breathe {
+            animation: breathe 2s infinite;
+        }
+        
+        .pulse-effect {
+            animation: pulse 1.5s infinite;
+        }
+        
+        .bounce-effect {
+            animation: bounce 2s infinite;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #2C2C2C 0%, #4A4A4A 50%, #2C2C2C 100%);
+        }
+        
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255,215,0,0.3);
+        }
+        
+        .card-3d {
+            transform: perspective(1000px) rotateX(5deg);
+            transition: all 0.3s ease;
+        }
+        
+        .card-3d:hover {
+            transform: perspective(1000px) rotateX(0deg) translateY(-10px);
+        }
+        
+        .whatsapp-icon {
+            position: fixed;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 50;
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            width: 64px;
+            height: 64px;
             border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--radiant-amber-caution);
-            margin: 0 auto 30px;
-            display: block;
-            position: relative;
-            z-index: 3;
-            box-shadow: 
-                0 15px 50px rgba(0, 0, 0, 0.3),
-                0 0 0 12px rgba(245, 158, 11, 0.2);
-            animation: testimonial-luminous-respiration 4s ease-in-out infinite;
-        }
-
-        @keyframes testimonial-luminous-respiration {
-            0%, 100% {
-                box-shadow: 
-                    0 15px 50px rgba(0, 0, 0, 0.3),
-                    0 0 0 12px rgba(245, 158, 11, 0.2);
-                transform: scale(1);
-            }
-            50% {
-                box-shadow: 
-                    0 20px 60px rgba(0, 0, 0, 0.4),
-                    0 0 0 16px rgba(245, 158, 11, 0.4);
-                transform: scale(1.03);
-            }
-        }
-
-        .primary-engagement-catalyst-mechanism {
-            background: linear-gradient(135deg, var(--luminous-crimson-activation) 0%, #b91c1c 100%);
-            color: var(--pristine-platinum-surface);
             border: none;
-            padding: 18px 45px;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: 700;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 12px 35px rgba(220, 38, 38, 0.4);
-            position: relative;
-            z-index: 3;
-            animation: engagement-catalyst-pulsation 2.8s infinite;
-            white-space: nowrap;
-            min-width: max-content;
-        }
-
-        @keyframes engagement-catalyst-pulsation {
-            0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 12px 35px rgba(220, 38, 38, 0.4);
-            }
-            50% {
-                transform: scale(1.06);
-                box-shadow: 0 18px 45px rgba(220, 38, 38, 0.6);
-            }
-        }
-
-        .primary-engagement-catalyst-mechanism:hover {
-            transform: translateY(-4px) scale(1.08);
-            box-shadow: 0 25px 60px rgba(220, 38, 38, 0.7);
-            animation-play-state: paused;
-        }
-
-        .informational-discourse-architectural-segment {
-            background: var(--pristine-platinum-surface);
-            margin: 35px 0;
-            padding: 40px 30px;
-            border-radius: 25px;
-            box-shadow: 
-                0 15px 50px rgba(0, 0, 0, 0.08),
-                0 5px 25px rgba(0, 0, 0, 0.04);
-            border: 2px solid var(--crystalline-border-delineation);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .informational-discourse-architectural-segment::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, 
-                var(--luminous-crimson-activation), 
-                var(--radiant-amber-caution), 
-                var(--vibrant-emerald-success),
-                var(--ethereal-azure-professional)
-            );
-        }
-
-        .hierarchical-content-designation-label {
-            font-size: 22px;
-            font-weight: 800;
-            color: var(--chromatic-obsidian-foundation);
-            margin-bottom: 20px;
-            text-align: center;
-            position: relative;
-        }
-
-        .hierarchical-content-designation-label::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--vibrant-emerald-success);
-            border-radius: 2px;
-        }
-
-        .contextual-narrative-exposition-paragraph {
-            font-size: 15px;
-            color: var(--titanium-charcoal-typography);
-            line-height: 1.7;
-            margin-bottom: 25px;
-            font-weight: 500;
-        }
-
-        .performance-metrics-statistical-presentation {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            border: 2px solid var(--ethereal-azure-professional);
-            border-radius: 18px;
-            padding: 25px;
-            margin: 25px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .performance-metrics-statistical-presentation::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(30, 64, 175, 0.05) 0%, transparent 70%);
-            animation: statistical-wave-undulation 6s linear infinite;
-        }
-
-        @keyframes statistical-wave-undulation {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .performance-summary-textual-elaboration {
-            font-size: 16px;
-            color: var(--ethereal-azure-professional);
-            font-weight: 600;
-            margin-bottom: 15px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .statistical-data-enumeration-content {
-            font-size: 14px;
-            color: var(--titanium-charcoal-typography);
-            line-height: 1.6;
-            position: relative;
-            z-index: 2;
-        }
-
-        .supplementary-visual-documentation-showcase {
-            width: 100%;
-            max-width: 350px;
-            height: auto;
-            border-radius: 20px;
-            margin: 30px auto;
-            display: block;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-            border: 3px solid var(--vibrant-emerald-success);
-            transition: transform 0.3s ease;
-        }
-
-        .supplementary-visual-documentation-showcase:hover {
-            transform: scale(1.02);
-        }
-
-        .cautionary-advisory-enumeration-framework {
-            list-style: none;
-            margin: 25px 0;
-        }
-
-        .individual-cautionary-specification-element {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            padding: 20px;
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            border-radius: 15px;
-            border-left: 4px solid var(--radiant-amber-caution);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .individual-cautionary-specification-element::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100px;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.1));
-            transform: translateX(100px);
-            transition: transform 0.5s ease;
-        }
-
-        .individual-cautionary-specification-element:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.2);
-        }
-
-        .individual-cautionary-specification-element:hover::before {
-            transform: translateX(0);
-        }
-
-        .cautionary-indicator-symbolic-representation {
-            color: var(--radiant-amber-caution);
-            font-weight: 900;
-            margin-right: 10px;
-            font-size: 16px;
-            min-width: 20px;
-        }
-
-        .cautionary-descriptive-elaboration-text {
-            font-size: 14px;
-            color: var(--titanium-charcoal-typography);
-            font-weight: 600;
-            line-height: 1.6;
-        }
-
-        .emphasis-highlighting-typographical-accent {
-            background: linear-gradient(135deg, var(--luminous-crimson-activation), #ef4444);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-weight: 800;
-        }
-
-        .regulatory-compliance-disclosure-notification {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            border: 3px solid var(--incandescent-gold-emphasis);
-            border-radius: 20px;
-            padding: 35px;
-            margin: 40px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .regulatory-compliance-disclosure-notification::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                -45deg,
-                transparent,
-                transparent 18px,
-                rgba(234, 179, 8, 0.05) 18px,
-                rgba(234, 179, 8, 0.05) 36px
-            );
-        }
-
-        .regulatory-warning-hierarchical-designation {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--incandescent-gold-emphasis);
-            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
             display: flex;
             align-items: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .regulatory-warning-hierarchical-designation::before {
-            content: '⚠️';
-            margin-right: 10px;
-            font-size: 20px;
-            animation: regulatory-warning-oscillation 1.8s infinite;
-        }
-
-        @keyframes regulatory-warning-oscillation {
-            0%, 50% { opacity: 1; transform: scale(1); }
-            51%, 100% { opacity: 0.7; transform: scale(0.92); }
-        }
-
-        .regulatory-compliance-textual-specification {
-            font-size: 13px;
-            color: var(--titanium-charcoal-typography);
-            line-height: 1.7;
-            margin-bottom: 12px;
-            position: relative;
-            z-index: 2;
-            font-weight: 500;
-        }
-
-        .legal-documentation-navigational-infrastructure {
-            background: var(--chromatic-obsidian-foundation);
-            color: var(--pristine-platinum-surface);
-            padding: 40px 0;
-            text-align: center;
-        }
-
-        .legal-framework-section-designation {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .legal-hyperlink-navigational-construct {
-            color: var(--ethereal-azure-professional);
-            text-decoration: none;
-            margin: 0 20px;
-            font-size: 15px;
+            justify-content: center;
+            font-size: 24px;
             transition: all 0.3s ease;
-            position: relative;
         }
-
-        .legal-hyperlink-navigational-construct::after {
-            content: '';
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-5px);
+        }
+        
+        .notification-badge {
             position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--radiant-amber-caution);
-            transition: width 0.3s ease;
+            top: -8px;
+            right: -8px;
+            background-color: #EF4444;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
         }
-
-        .legal-hyperlink-navigational-construct:hover {
-            color: var(--radiant-amber-caution);
+        
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
-
-        .legal-hyperlink-navigational-construct:hover::after {
-            width: 100%;
+        
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0,0,0,0.2);
         }
-
-        .suspended-engagement-atmospheric-sphere {
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #FFD700;
+            margin-bottom: 24px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #D1D5DB;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+        
+        .hero-description {
+            font-size: 1.25rem;
+            color: #9CA3AF;
+            margin-bottom: 48px;
+        }
+        
+        .profile-card {
+            background-color: #374151;
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            display: inline-block;
+            margin-bottom: 48px;
+        }
+        
+        .profile-image {
+            width: 192px;
+            height: 192px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 16px;
+            border: 4px solid #FFD700;
+            display: block;
+        }
+        
+        .btn-primary {
+            background-color: #FFD700;
+            color: #2C2C2C;
+            padding: 16px 32px;
+            border-radius: 9999px;
+            font-size: 1.25rem;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.05);
+        }
+        
+        .btn-orange {
+            background-color: #FF6B35;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 9999px;
+            font-size: 1.25rem;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-blue {
+            background-color: #4A90E2;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 9999px;
+            font-size: 1.25rem;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .section {
+            min-height: 100vh;
+            padding: 80px 0;
+        }
+        
+        .section-gray {
+            background-color: #111827;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            color: #FFD700;
+            margin-bottom: 64px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 48px;
+            align-items: center;
+            margin-bottom: 64px;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            margin-bottom: 64px;
+        }
+        
+        .card {
+            background-color: #374151;
+            padding: 24px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+        
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #FFD700;
+            margin-bottom: 8px;
+        }
+        
+        .card-text {
+            color: #D1D5DB;
+        }
+        
+        .highlight-box {
+            background-color: #FFD700;
+            color: #2C2C2C;
+            padding: 16px;
+            border-radius: 8px;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            margin: 4px;
+        }
+        
+        .tag-blue { background-color: #4A90E2; color: white; }
+        .tag-orange { background-color: #FF6B35; color: white; }
+        .tag-yellow { background-color: #FFD700; color: #2C2C2C; }
+        
+        .floating-btn {
             position: fixed;
-            bottom: 25px;
+            bottom: 24px;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--luminous-crimson-activation) 0%, #b91c1c 100%);
-            color: var(--pristine-platinum-surface);
+            z-index: 50;
+            background-color: #FFD700;
+            color: #2C2C2C;
+            padding: 16px 32px;
+            border-radius: 9999px;
+            font-size: 1.125rem;
+            font-weight: bold;
             border: none;
-            padding: 20px 40px;
-            border-radius: 50px;
-            font-size: 15px;
-            font-weight: 800;
             cursor: pointer;
-            z-index: 99999;
-            box-shadow: 0 15px 40px rgba(220, 38, 38, 0.6);
-            animation: suspended-atmospheric-respiration 3.2s ease-in-out infinite;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
             white-space: nowrap;
-            overflow: hidden;
-            max-width: 88vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
-
-        .suspended-engagement-atmospheric-sphere::before {
-            content: '';
+        
+        .footer {
+            background-color: #000;
+            padding: 48px 0;
+        }
+        
+        .footer-content {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .footer-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #FFD700;
+            margin-bottom: 24px;
+        }
+        
+        .footer-text {
+            color: #D1D5DB;
+            font-size: 0.875rem;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        
+        .footer-bottom {
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid #374151;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.875rem;
+            color: #9CA3AF;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+        
+        .footer-link {
+            color: #9CA3AF;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: #FFD700;
+        }
+        
+        .scroll-indicator {
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            animation: suspended-luminescence-transition 2.2s infinite;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #FFD700;
+            font-size: 1.5rem;
         }
-
-        @keyframes suspended-luminescence-transition {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        @keyframes suspended-atmospheric-respiration {
-            0%, 100% {
-                transform: translateX(-50%) scale(1);
-                box-shadow: 0 15px 40px rgba(220, 38, 38, 0.6);
+        
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2rem; }
+            .hero-subtitle { font-size: 1.25rem; }
+            .section-title { font-size: 2rem; }
+            .container { padding: 0 16px; }
+            .whatsapp-icon { right: 16px; }
+            .floating-btn { 
+                left: 16px; 
+                right: 16px; 
+                transform: none; 
+                font-size: 1rem;
+                padding: 12px 24px;
             }
-            50% {
-                transform: translateX(-50%) scale(1.08);
-                box-shadow: 0 22px 55px rgba(220, 38, 38, 0.8);
-            }
-        }
-
-        .suspended-engagement-atmospheric-sphere:hover {
-            animation-play-state: paused;
-            transform: translateX(-50%) translateY(-6px) scale(1.12);
-            box-shadow: 0 28px 65px rgba(220, 38, 38, 0.8);
-        }
-
-        @media (max-width: 520px) {
-            .strategic-viewport-containment-matrix {
-                padding: 0 20px;
-            }
-
-            .atmospheric-hero-presentation-complex {
-                padding: 60px 0 40px;
-            }
-
-            .declarative-mission-statement-typography {
-                font-size: 18px;
-            }
-
-            .testimonial-authentication-visual-asset {
-                width: 120px;
-                height: 120px;
-            }
-
-            .informational-discourse-architectural-segment {
-                margin: 25px 0;
-                padding: 30px 25px;
-            }
-
-            .hierarchical-content-designation-label {
-                font-size: 20px;
-            }
-
-            .primary-engagement-catalyst-mechanism {
-                padding: 16px 35px;
-                font-size: 15px;
-            }
-
-            .suspended-engagement-atmospheric-sphere {
-                padding: 18px 30px;
-                font-size: 14px;
-                bottom: 20px;
-                max-width: 85vw;
-            }
-        }
-
-        @media (max-width: 400px) {
-            .individual-cautionary-specification-element {
-                padding: 18px;
-            }
-
-            .suspended-engagement-atmospheric-sphere {
-                padding: 16px 25px;
-                font-size: 13px;
-            }
-
-            .testimonial-authentication-visual-asset {
-                width: 100px;
-                height: 100px;
-            }
+            .footer-bottom { flex-direction: column; gap: 16px; }
         }
     </style>
 </head>
 <body>
-   <div class="orchestrated-document-infrastructure">
-        <!-- Primary Hero Presentation -->
-        <section class="atmospheric-hero-presentation-complex">
-            <div class="strategic-viewport-containment-matrix">
-                <p class="declarative-mission-statement-typography">
-                    Ich bin vielleicht die einzige Person online, die jeden einzelnen Aktienhandelsentscheid konsequent live auf Twitch, YouTube und TikTok streamt - völlig kostenlos. Dies ist keine Anlageberatung oder ein schnelles Reich-werden-Schema, sondern meine echte Handelsreise als gewöhnlicher Händler.
+<!-- 
+    <div class="whatsapp-icon">
+        <div style="position: relative;">
+            <button onclick="opensite()" class="whatsapp-btn breathe hover-lift">
+                &#x260E;
+            </button>
+            <div class="notification-badge breathe">
+                1
+            </div>
+        </div>
+    </div>
+	-->
+
+    <!-- 第一屏 - 英雄区域 -->
+    <section class="hero-section gradient-bg">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title bounce-effect">
+                    Finanzwissen für ALLE
+                </h1>
+                <p class="hero-subtitle">
+                    In der Finanzwelt glauben viele, dass erfolgreiche Investitionen komplexe mathematische Modelle erfordern, 
+                    aber <span style="color: #FFD700; font-weight: bold;">Professor Andreas Graf</span> revolutioniert diese Ansicht.
+                </p>
+                <p class="hero-description">
+                    Er glaubt, dass wahre Finanzweisheit darin liegt, komplexe Marktphänomene in Wissen umzuwandeln, 
+                    das gewöhnliche Menschen verstehen können.
                 </p>
                 
-                <img src="img/1.jpg" class="testimonial-authentication-visual-asset">
+                <div class="profile-card card-3d">
+                    <img src="img/1.png" alt="Andreas Graf" class="profile-image">
+                    <h3 style="font-size: 1.25rem; font-weight: bold; color: #FFD700;">Professor Andreas Graf</h3>
+                    <p style="color: #D1D5DB;">Alter: 54 Jahre | Geburtsort: Regensburg, Bayern, Deutschland</p>
+                </div>
                 
-                <button class="primary-engagement-catalyst-mechanism" onclick="otta()">WhatsApp-Gruppe beitreten</button>
+                <button onclick="opensite()" class="btn-primary pulse-effect">
+                    &#x1F465; Kostenlos der Gemeinschaft beitreten
+                </button>
             </div>
-        </section>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator bounce-effect">
+            &#x25BC;
+        </div>
+    </section>
 
-        <div class="strategic-viewport-containment-matrix">
-            <!-- Trading Performance Documentation -->
-            <section class="informational-discourse-architectural-segment">
-                <h2 class="hierarchical-content-designation-label">Aktuelle Handelsperformance</h2>
+    <!-- 第二屏 - 专家背景 -->
+    <section class="section section-gray">
+        <div class="container">
+            <div style="max-width: 1536px; margin: 0 auto;">
+                <h2 class="section-title">
+                    Über Professor Andreas Graf
+                </h2>
                 
-                <div class="performance-metrics-statistical-presentation">
-                    <div class="performance-summary-textual-elaboration">Handelsbilanz der letzten 3 Wochen</div>
-                    <div class="statistical-data-enumeration-content">
-                        In den letzten drei Wochen habe ich 56 Trades ausgeführt: 42 profitabel, 14 Verluste. Bitte denken Sie daran: Die Märkte sind immer unsicher, vergangene Leistungen garantieren keine zukünftigen Ergebnisse, und dies stellt keine Anlageberatung dar. Laut den neuesten SEC-Daten verlieren über 78 % der Privatanleger Geld an der Börse, weshalb ich darauf bestehe, Sie daran zu erinnern: Investieren birgt Risiken, gehen Sie vorsichtig an die Märkte heran, und setzen Sie niemals Geld ein, das Sie für Lebenshaltungskosten benötigen.
+                <div class="grid-2">
+                    <div class="card-3d">
+                        <img src="img/3.jpg" alt="Andreas Graf Portrait" style="width: 100%; border-radius: 8px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);">
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 24px;">
+                        <p style="font-size: 1.125rem; color: #D1D5DB; line-height: 1.6;">
+                            Professor Andreas Graf ist ein 54-jähriger deutscher Finanzexperte, geboren in Regensburg. 
+                            Er erwarb seinen Bachelor- und Masterabschluss in Finanzwesen und Wirtschaft an der Universität München, 
+                            gefolgt von einer Promotion in Finanzwesen an der Universität Hamburg.
+                        </p>
+                        <p style="font-size: 1.125rem; color: #D1D5DB; line-height: 1.6;">
+                            Seine frühen Forschungen konzentrierten sich auf Kapitalflüsse, Risikopreismodelle und 
+                            die Stabilität von Finanzsystemen.
+                        </p>
+                        <div class="highlight-box">
+                            <p style="font-weight: bold; margin-bottom: 4px;">Während seiner Zeit an der Frankfurter Börse</p>
+                            <p>8 Jahre als Senior-Marktanalyst, leitete mehrere internationale M&A-Projekte</p>
+                        </div>
                     </div>
                 </div>
                 
-                <div style="text-align: center; margin-top: 30px;">
-                    <button class="primary-engagement-catalyst-mechanism" onclick="otta()"> Stellen Sie Ihre Frage</button>
+                <div style="text-align: center;">
+                    <button onclick="opensite()" class="btn-orange hover-lift bounce-effect">
+                        &#x260E; Kostenlos der Gemeinschaft beitreten
+                    </button>
                 </div>
-            </section>
-
-            <!-- Community Access Information -->
-            <section class="informational-discourse-architectural-segment">
-                <img src="img/2.jpg" class="supplementary-visual-documentation-showcase">
-                
-                <p class="contextual-narrative-exposition-paragraph">
-                   Ich hatte das Glück, Teil von <span style="font-weight: bold; color: red;">Andreas Graf's Team</span> zu werden, was es mir ermöglicht hat, solche Ergebnisse zu erzielen. Jetzt möchte ich, dass mehr Menschen diesen Erfolg erleben. Sie können die WhatsApp-Nummer des Lehrassistenten kostenlos hinzufügen und sich selbst überzeugen: <span style="font-weight: bold; color: red;">keine Gebühren, keine Lektionen</span>, nur echte Handelsinsights.
-                </p>
-                <img src="img/4.png" class="supplementary-visual-documentation-showcase">
-  
-                <p class="contextual-narrative-exposition-paragraph">
-                   Professor Andreas Graf, 54, ist ein deutscher Finanzexperte, geboren in Regensburg. Er hat einen Doppelabschluss der Universität München und einen Doktortitel der Universität Hamburg. Er war als leitender Marktanalyst an der Frankfurter Wertpapierbörse tätig und ist derzeit Gastprofessor an der Columbia University. 2015 gründete er den Council for International Economic Education, der sich auf KI-gestützten Handel und Chancengleichheit in der Finanzbildung konzentriert.
-                </p>
-                
-                <p class="contextual-narrative-exposition-paragraph">
-                    Wenn Sie mehr professionelle Unterstützung wünschen, können Sie Andreas Graf's Assistenten hinzufügen, um mehr Unterstützung zu erhalten. Egal, ob Sie ein Anfänger oder ein erfahrener Händler sind, es lohnt sich, hier beizutreten, um gemeinsam die Freude am Handel zu entdecken.
-                    <br><br>
-                    Wenn dies Ihnen hilft, großartig; wenn nicht, ist das auch in Ordnung. Ich wünsche Ihnen aufrichtig Erfolg und Glück!
-                </p>
-                
-                <h3 class="hierarchical-content-designation-label">Bitte missverstehen Sie nicht:</h3>
-                
-                <ul class="cautionary-advisory-enumeration-framework">
-                    <li class="individual-cautionary-specification-element">
-                        <span class="cautionary-indicator-symbolic-representation">⚠️</span>
-                        <span class="cautionary-descriptive-elaboration-text">Dies ist keine "Schnell-reich-werden"-Gruppe - <span class="emphasis-highlighting-typographical-accent">Märkte haben Risiken, Verluste sind unvermeidlich</span></span>
-                    </li>
-                    
-                    <li class="individual-cautionary-specification-element">
-                        <span class="cautionary-indicator-symbolic-representation">⚠️</span>
-                        <span class="cautionary-descriptive-elaboration-text">Praxis ist entscheidend - <span class="emphasis-highlighting-typographical-accent">Andreas Graf hat viele Jahre Erfahrung im Handel, mit seinem profundem Fachwissen und scharfen Marktinsights</span></span>
-                    </li>
-                    
-                    <li class="individual-cautionary-specification-element">
-                        <span class="cautionary-indicator-symbolic-representation">⚠️</span>
-                        <span class="cautionary-descriptive-elaboration-text">Bezahlte Inhalte strengstens verboten - <span class="emphasis-highlighting-typographical-accent">sofort melden, falls gefunden</span></span>
-                    </li>
-                </ul>
-            </section>
-
-            <!-- Mission Statement -->
-            <section class="informational-discourse-architectural-segment">
-                <h2 class="hierarchical-content-designation-label">Mein Zweck</h2>
-                
-                <p class="contextual-narrative-exposition-paragraph">
-                Ich mache das nicht, um zu beweisen, wie gut ich bin (ich mache selbst oft Fehler). Wenn Sie nach einer Abkürzung suchen, um "über Nacht reich zu werden", ist das möglicherweise nicht geeignet für Sie; aber wenn Sie bereit sind, ruhig zu bleiben und Ihr Investitionswissen zu verbessern, indem Sie echte Handelsaufzeichnungen beobachten, lade ich Sie herzlich ein, Andreas Graf's Team kostenlos beizutreten.
-                </p>
-                
-                <p class="contextual-narrative-exposition-paragraph">
-                 Der Beitritt zu <span style="font-weight: bold; color: red;">Andreas Graf's Team</span> gibt mir ein Gefühl von echter und zuverlässiger Kraft. Hier werden keine Kurse verkauft oder Gebühren erhoben, sondern echte Handelsaufzeichnungen und Erfahrungen geteilt. Dieses Team ermutigt jeden, voneinander zu lernen und sich gegenseitig zu unterstützen.
-                </p>
-                
-                <p class="contextual-narrative-exposition-paragraph">
-                Wenn Sie denken, dass diese Gemeinschaft für Sie geeignet ist, heiße ich Sie herzlich willkommen; wenn Sie denken, dass sie nicht geeignet ist, wünsche ich Ihnen ebenfalls aufrichtig Erfolg und Glück!
-                </p>
-                
-                <div style="text-align: center; margin-top: 30px;">
-                    <button class="primary-engagement-catalyst-mechanism" onclick="otta()">WhatsApp-Gruppe beitreten</button>
-                </div>
-            </section>
-
-           <!-- Regulatory Compliance Disclosure -->
-            <section class="regulatory-compliance-disclosure-notification">
-                <h3 class="regulatory-warning-hierarchical-designation">Wichtiger Risikohinweis</h3>
-                <p class="regulatory-compliance-textual-specification">
-                    • Dieser Dienst bietet nur allgemeine Markinformationen an und stellt keine Anlageberatung oder Empfehlungen dar.
-                </p>
-                <p class="regulatory-compliance-textual-specification">
-                    • Finanzmärkte sind riskant, und Sie können einen Teil oder Ihr gesamtes Investitionskapital verlieren.
-                </p>
-                <p class="regulatory-compliance-textual-specification">
-                    • Alle angezeigten Beispiele sind historische Datenanalysen und stellen keine Garantie für zukünftige Erträge dar.
-                </p>
-                <p class="regulatory-compliance-textual-specification">
-                    • Investoren sollten fundierte Entscheidungen basierend auf ihrer eigenen Risikobereitschaft treffen.
-                </p>
-                <p class="regulatory-compliance-textual-specification">
-                    • Alle Informationen sind objektive Tatsachen und stellen keine Anlageberatung dar.
-                </p>
-            </section>
-        </div>
-
-        <!-- Legal Framework Navigation -->
-        <footer class="legal-documentation-navigational-infrastructure">
-            <div class="strategic-viewport-containment-matrix">
-                <h4 class="legal-framework-section-designation">Rechtliche Informationen</h4>
-                <a href="privacy.html" class="legal-hyperlink-navigational-construct">Datenschutzrichtlinie</a>
-                <a href="terms.html" class="legal-hyperlink-navigational-construct">Nutzungsbedingungen</a>
             </div>
-        </footer>
+        </div>
+    </section>
 
-        <!-- Suspended Engagement Mechanism -->
-        <button class="suspended-engagement-atmospheric-sphere" onclick="otta()">
-         WhatsApp-Gruppe beitreten
-        </button>
-</div>
-   
+    <!-- 第三屏 - 成就与创新 -->
+    <section class="section gradient-bg">
+        <div class="container">
+            <div style="max-width: 1536px; margin: 0 auto;">
+                <h2 class="section-title">
+                    Innovation & Erfolg
+                </h2>
+                
+                <div class="grid-3">
+                    <div class="card card-3d hover-lift">
+                        <div class="card-icon" style="color: #4A90E2;">
+                            &#x1F3EB;
+                        </div>
+                        <h3 class="card-title">USA-Karriere</h3>
+                        <p class="card-text">Gastprofessor an der Columbia University und Strategieberater für BlackRock und JP Morgan</p>
+                    </div>
+                    
+                    <div class="card card-3d hover-lift">
+                        <div class="card-icon" style="color: #FF6B35;">
+                            &#x1F9E0;
+                        </div>
+                        <h3 class="card-title">KI-Forschung</h3>
+                        <p class="card-text">Spezialisiert auf Behavioral Finance und KI-Trading mit praktischen Ergebnissen</p>
+                    </div>
+                    
+                    <div class="card card-3d hover-lift">
+                        <div class="card-icon" style="color: #FFD700;">
+                            &#x1F30D;
+                        </div>
+                        <h3 class="card-title">IEEC Gründung</h3>
+                        <p class="card-text">2015 gründete er den International Economic Education Council</p>
+                    </div>
+                </div>
+                
+                <div style="background-color: #374151; padding: 32px; border-radius: 8px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); margin-bottom: 48px;" class="card-3d">
+                    <div class="grid-2">
+                        <div>
+                            <h3 style="font-size: 1.5rem; font-weight: bold; color: #FFD700; margin-bottom: 16px;">KI-Investitionsanalysesystem</h3>
+                            <p style="color: #D1D5DB; line-height: 1.6; margin-bottom: 24px;">
+                                Sein IEEC-Forschungsteam entwickelt KI-Investitionsanalysesysteme, die US-, Europa- und 
+                                Asien-Pazifik-Märkte abdecken, mit Echtzeit-Datenrespons, Sentimentanalyse und 
+                                multidimensionaler Risikovorhersage.
+                            </p>
+                            <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+                                <span class="tag tag-blue">Echtzeit-Analyse</span>
+                                <span class="tag tag-orange">Globale Märkte</span>
+                                <span class="tag tag-yellow">KI-gestützt</span>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="img/2.png" alt="KI System" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <button onclick="opensite()" class="btn-blue hover-lift pulse-effect">
+                        &#x1F680; Kostenlos der Gemeinschaft beitreten
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 悬浮底部按钮 -->
+    <button onclick="opensite()" class="floating-btn breathe hover-lift">
+        &#x260E; Jetzt der Community beitreten
+    </button>
+
+    <!-- 风险提示和政策声明 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h3 class="footer-title">⚠️ Wichtiger Risikohinweis</h3>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <p class="footer-text">• Dieser Service bietet nur allgemeine Marktinformationen und stellt keine Anlageberatung oder -empfehlung dar.</p>
+                <p class="footer-text">• Finanzmärkte bergen Risiken, Sie können einen Teil oder Ihr gesamtes Anlagekapital verlieren.</p>
+                <p class="footer-text">• Alle gezeigten Beispiele basieren auf historischen Datenanalysen und stellen keine Garantie für zukünftige Erträge dar.</p>
+                <p class="footer-text">• Anleger sollten Entscheidungen basierend auf ihrer eigenen Risikotoleranz treffen.</p>
+                <p class="footer-text">• Alle Informationen sind objektive Tatsachendarstellungen und stellen keine Anlageberatung dar.</p>
+            </div>
+            
+            <div class="footer-bottom">
+                <div>
+                    <p>© 2024 Andreas Graf - Finanzbildung. Alle Rechte vorbehalten.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#" target="_blank" class="footer-link">Datenschutzrichtlinie</a>
+                    <a href="#" target="_blank" class="footer-link">Nutzungsbedingungen</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+       
+
+        // 深色模式支持
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // 平滑滚动效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
